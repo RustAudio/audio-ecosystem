@@ -1,5 +1,5 @@
 We believe all audio needs can be shared by one base. Currently there are
-multiple audio engines. They all where made with different goals in mind.
+multiple audio engines. They were all made with different goals in mind.
 
 # Goals
 We aim to:
