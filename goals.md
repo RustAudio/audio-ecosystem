@@ -61,13 +61,13 @@ There is nothing about this library that we feel needs improvement. I just felt 
 
 We wish to create a new tech stack that will become the new de-facto solution for audio in Rust.
 
-This new tech stack will comprise of the following crates:
+This proposed tech stack would comprise of the following crates:
 
 ## [Firewheel](https://github.com/BillyDM/Firewheel)
 
 At the heart of project is the "audio graph" engine. An audio graph allows users to connect any combination of audio streams, sound generators, and audio effects together in any configuration. It provides the low-level tools needed to create almost any audio solution (*aside from say a full-on digital audio workstation). Think of it like [wgpu](https://wgpu.rs/), but for audio.
 
-We will use [Firewheel](https://github.com/BillyDM/Firewheel) as our audio graph engine. It has been designed from the ground-up to be a powerful base.
+We plan to use [Firewheel](https://github.com/BillyDM/Firewheel) as our audio graph engine. It has been designed from the ground-up using the lessons learned previous engines.
 
 Some of its key features include:
 - Modular design that can be run on any backend that provides an audio stream
@@ -94,14 +94,14 @@ While Firewheel is meant to cover nearly every use case for games and generic ap
 * Built-in synthesizer instruments (This can still be done with third-party nodes/CLAP plugins.)
 * Advanced mixing effects like parametric EQs, compressors, and limiters (This again can be done with third-party nodes/CLAP plugins.)
 * GUIs for hosted CLAP plugins (Although this feature could be added in the future if there is enough demand for it).
-* Multi-threaded audio graph processing (This would make the engine a lot more complicated, and it is probably overkill for games and genric applications.)
+* Multi-threaded audio graph processing (This would make the engine a lot more complicated, and it is probably overkill for games and generic applications.)
 * VST, VST3, LV2, and AU plugin hosting
 
 ### [Interflow](https://github.com/SolarLiner/interflow)
 
-While [CPAL](https://github.com/RustAudio/cpal) has served the Rust ecosystem well over the years as a platform-agnostic audio input/output library, its API does not allow for essential features like duplex audio devices. Also many, including myself, have found its API to be cumbersome and confusing.
+While [CPAL](https://github.com/RustAudio/cpal) has served the Rust ecosystem well over the years as a platform-agnostic audio input/output library, its API does not allow for essential features like duplex audio devices. Some have found its API to be cumbersome and confusing.
 
-As such, we want to push the Rust ecosystem towards this new library for audio i/o. It aims to address the problems we have had with CPAL, as well as being able to support native duplex audio devices.
+As such, we want to see if this new library provides a better alternative. It aims to address the problems we have had with CPAL, as well as being able to support native duplex audio devices.
 
 ### [fixed-resample](https://github.com/MeadowlarkDAW/fixed-resample)
 
