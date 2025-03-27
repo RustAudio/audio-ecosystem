@@ -10,7 +10,7 @@ In short, the goal is to unify many of these efforts into a single organization 
 # How will we do this?
 - Chart the features needed by developers using audio, see:
   [requirements](requirements.md)
-- Define a de-facto tech stack for audio in Rust, see [techstack](techstack.md).
+- Define a de-facto tech stack for audio in Rust, see [techstack](techstack.md). To that end we are building a [demo application](demo.md) to compare different audio engine choices.
 - Move the key parts of the stack into a shared organization 
 - Build a single high level crate that handles most use-cases without requiring
   audio knowledge
