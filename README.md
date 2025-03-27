@@ -8,8 +8,9 @@ In short, the goal is to unify many of these efforts into a single organization 
 - Having a single solution with multiple active maintainers will increase user's confidence in these libraries.
 
 # How will we do this?
-- Chart the features needed by developers using audio, see: [requirements.md]
-- Define a de-facto tech stack for audio in Rust, see [techstack.md].
+- Chart the features needed by developers using audio, see:
+  [requirements](requirements.md)
+- Define a de-facto tech stack for audio in Rust, see [techstack](techstack.md).
 - Move the key parts of the stack into a shared organization 
 - Build a single high level crate that handles most use-cases without requiring
   audio knowledge
