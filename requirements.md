@@ -4,8 +4,29 @@ Becoming the standard audio stack for Rust requires us to support near all neede
 To that end we start with features supported by popular Rust audio engines like *Kira* & *Rodio*. Requests of those engines also point to needed use-cases. Finally we hope to learn from looking at large projects using audio like *Bevy* and *Fyrox*.
 
 ### Supported by Kira
-
-*TODO*
+- Smoothly adjusting properties of sounds without pops (via [tween](https://docs.rs/kira/latest/kira/struct.Tween.html))
+- Change the settings of effects automatically [modulate](https://docs.rs/kira/latest/kira/modulator/index.html)
+- Apply audio effects: 
+  - Compression
+  - Delay
+  - Distortion
+  - Equalizer
+  - Filter
+  - Stereo panning
+  - Reverb
+  - Volume control
+  - Fade-in/Fade-out (via tweens)
+- Add custom effects
+- Control audio effects from anywhere in the program
+- Control the application of an effects on multiple tracks from one point
+- Flexible mixer for applying effects to audio, 
+- A clock system which allows starting sounds at precise times, ideal for rhythm games. 
+- Loop a specific range of a piece of audio
+- Seek to a specific position in the audio 
+- Control the pitch of audio in musical intervals (semitones) though this also
+  affects playback rate
+- Spatial audio (volume/panning based), can link effect parameters to distance
+  from listener
 
 ### Supported by Rodio
 
