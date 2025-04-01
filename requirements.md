@@ -66,10 +66,49 @@ These are mostly in response to trends we see in issues made
 - Switch between slower HiFi resampler and a fast LoFi one.
 
 ### Needed by Bevy
-Bevy is a widely used game engine build around the ECS model. Because bevy uses ECS it has specific demands from an audio engine.
 
-*TODO*
+Bevy is a popular game engine built around the ECS paradigm.
+Its ECS is highly flexible, so there are many valid ways to integrate
+audio engines. However, idiomatic integrations
+should strive to satisfy three conditions:
 
+1. ECS-driven design.
+2. Broad platform support.
+3. Integration with Bevy's asset system.
+
+#### ECS-driven design
+
+Audio engines are a good fit for ECS-driven design. Playing sounds
+can be modeled by spawning sound entities. Audio tracks and buses
+can be modeled as groups of related entities. Depending on the
+engine, it may also make sense to model effects as entities.
+
+Many audio engines will facilitate ECS-driven integrations out of the box.
+The only hard requirement is that audio types must implement Bevy's 
+[`Component`](https://docs.rs/bevy/latest/bevy/ecs/component/trait.Component.html)
+trait. This can be done directly, through a newtype or other wrapper,
+or even via managed proxy types.
+
+#### Broad platform support
+
+Bevy features broad platform support, including
+desktop platforms, mobile, WebAssembly, and increasingly
+resource-constrained environments such as microcontrollers.
+Users will expect audio engines to provide similarly broad
+support either out of the box or with extensible backends.
+Core functionality like sample playback should not depend
+on the ability to read files from disk.
+
+#### Integration with Bevy's asset system
+
+Audio engines must be able to integrate with Bevy's 
+asset system. The asset system helps maintain cross-platform
+compatibility, de-duplicates already-loaded assets, and
+automatically handles loading and decoding in separate threads
+on supporting platforms.
+
+To support this integration, the only requirement is that
+audio engines must accept in-memory sample sources.
 
 ### Added by unification team
 Needs we have ourselves or features we have seen requested but can not link too.
