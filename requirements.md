@@ -4,6 +4,7 @@ Becoming the standard audio stack for Rust requires us to support near all neede
 To that end we start with features supported by popular Rust audio engines like *Kira* & *Rodio*. Requests of those engines also point to needed use-cases. Finally we hope to learn from looking at large projects using audio like *Bevy* and *Fyrox*.
 
 ### Supported by Kira
+
 - Smoothly adjusting properties of sounds without pops (via [tween](https://docs.rs/kira/latest/kira/struct.Tween.html))
 - Change the settings of effects automatically [modulate](https://docs.rs/kira/latest/kira/modulator/index.html)
 - Apply audio effects: 
@@ -79,3 +80,10 @@ Needs we have ourselves or features we have seen requested but can not link too.
 - Microphone as input node to the audio graph @dvdsk. 
 - Add an output to the OS, any audio send to it enters the audio graph. @dvdsk
 - Add an input to the OS, it gets audio from an output of the audio graph. @dvdsk
+- Support features on capable embedded hardware where possible. With capable hardware we mean the target:
+    - Supports 32 bit floating points.
+    - Has 32 bit float atomics.
+  This would allow applications such as: 
+    - (battery operated) Alarm clocks
+    - Light portable audio players
+  We might make this a soft requirement, meaning we attempt to achieve this if it does not take too much extra effort.
