@@ -81,8 +81,8 @@ Needs we have ourselves or features we have seen requested but can not link too.
 - Add an output to the OS, any audio send to it enters the audio graph. @dvdsk
 - Add an input to the OS, it gets audio from an output of the audio graph. @dvdsk
 - Support features on capable embedded hardware where possible. With capable hardware we mean the target:
-    - Supports 32 bit floating points.
-    - Has 32 bit float atomics.
+    - Can supports 32 bit floating points through [libm](https://crates.io/crates/libm).
+    - Has 32 bit float atomics via [portable-atomics](https://crates.io/crates/portable-atomic).
   This would allow applications such as: 
     - (battery operated) Alarm clocks
     - Light portable audio players
