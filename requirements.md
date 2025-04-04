@@ -80,7 +80,7 @@ Needs we have ourselves or features we have seen requested but can not link too.
 - Microphone as input node to the audio graph @dvdsk. 
 - Add an output to the OS, any audio send to it enters the audio graph. @dvdsk
 - Add an input to the OS, it gets audio from an output of the audio graph. @dvdsk
-- Support features on capable embedded hardware where possible. With capable hardware we mean the target:
+- Have (partial) functionality on `no_std` targets. Such as capable embedded hardware. The targets need to at least:
     - Can supports 32 bit floating points through [libm](https://crates.io/crates/libm).
     - Has 32 bit float atomics via [portable-atomics](https://crates.io/crates/portable-atomic).
   This would allow applications such as: 
