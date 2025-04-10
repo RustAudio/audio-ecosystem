@@ -70,30 +70,44 @@ These are mostly in response to trends we see in issues made
 Bevy is a popular game engine built around the ECS paradigm.
 Its ECS is highly flexible, so there are many valid ways to integrate
 audio engines. However, idiomatic integrations
-should strive to satisfy three conditions:
+should strive to satisfy a few conditions:
 
 1. ECS-driven design.
 2. Broad platform support.
 3. Integration with Bevy's asset system.
 
+Bevy is looking for a _first-class_ audio solution.
+Playing samples, applying effects, routing audio, and
+even authoring effects should feel natural, not tacked-on.
+Adhering to these conditions will help guide engines and integrations
+towards that first-class experience.
+
 #### ECS-driven design
 
-Audio engines are a good fit for ECS-driven design. Playing sounds
+Increasingly, crate authors within Bevy's ecosystem are choosing to integrate
+deeply with the ECS; they are choosing _ECS-driven_ design.
+This provides quite a few advantages to both crate authors and users,
+and the capabilities of the ECS are only expanding with every release.
+
+Luckily, audio engines tend to mesh well with the ECS. Playing sounds
 can be modeled by spawning sound entities. Audio tracks and buses
 can be modeled as groups of related entities. Depending on the
 engine, it may also make sense to model effects as entities.
 
-Many audio engines will facilitate ECS-driven integrations out of the box.
-The only hard requirement is that audio types must implement Bevy's 
-[`Component`](https://docs.rs/bevy/latest/bevy/ecs/component/trait.Component.html)
-trait. This can be done directly, through a newtype or other wrapper,
-or even via managed proxy types.
+To facilitate this design, user-facing types _must_ implement
+Bevy's [`Component`](https://docs.rs/bevy/latest/bevy/ecs/component/trait.Component.html)
+trait. Note that `Component` requires `Send + Sync + 'static`.
+Ideally, core types should implement `Component` directly, not via wrapper or
+proxy types. Audio engines can feature-gate their `Component` implementations
+to maintain engine-agnostic design.
+Most audio engines will likely need targeted abstractions over
+_some_ parts of their API surface, but these should be kept minimal.
 
 #### Broad platform support
 
 Bevy features broad platform support, including
 desktop platforms, mobile, WebAssembly, and increasingly
-resource-constrained environments such as microcontrollers.
+resource-constrained `no_std` environments.
 Users will expect audio engines to provide similarly broad
 support either out of the box or with extensible backends.
 Core functionality like sample playback should not depend
@@ -101,7 +115,7 @@ on the ability to read files from disk.
 
 #### Integration with Bevy's asset system
 
-Audio engines must be able to integrate with Bevy's 
+Audio engines must be able to integrate with Bevy's
 asset system. The asset system helps maintain cross-platform
 compatibility, de-duplicates already-loaded assets, and
 automatically handles loading and decoding in separate threads
