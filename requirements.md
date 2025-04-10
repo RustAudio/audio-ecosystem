@@ -86,8 +86,10 @@ towards that first-class experience.
 
 Increasingly, crate authors within Bevy's ecosystem are choosing to integrate
 deeply with the ECS; they are choosing _ECS-driven_ design.
-This provides quite a few advantages to both crate authors and users,
-and the capabilities of the ECS are only expanding with every release.
+This provides quite a few advantages to both crate authors and users.
+For example, keeping track of emitter positions for spatial audio is easy
+when emitter and transform components share the same entity.
+And, with each release, the capabilities of the ECS are only expanding.
 
 Luckily, audio engines tend to mesh well with the ECS. Playing sounds
 can be modeled by spawning sound entities. Audio tracks and buses
